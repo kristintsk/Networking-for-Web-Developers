@@ -39,27 +39,46 @@ this way it is possible to send and receive messages in both windows
 
 
 ### 2. Ülevaade põhilistest võrguseadmetest ja nende ülesannetest:
-- **Router (ruuter)**
-Router is a device that connects two different IP networks. It acts as a gateway - hosts forward the traffic through the router.\
+- **Router (ruuter)**\
+Router is a device that connects two different IP networks. It acts as a gateway - hosts forward the traffic through the router.
 
-- **Switch (kohtvõrgukommutaator)**
-- **Firewall (tulemüür)** 
-- **WiFi access point (WiFi tugijaam)**
+- **Switch (kohtvõrgukommutaator)**\
 
-### 3. Võrguprotokollid ja nende kasutus (lühidalt):
-- **SSH**
+- **Firewall (tulemüür)**\
+
+- **WiFi access point (WiFi tugijaam)**\
+
+
+### 3. Võrguprotokollid ja nende kasutus:
+- **SSH**\
+SSH means **Secure Shell** and is a cryptographic network protocol for operating network services securely over an unsecured network.
+     - Typical applications include remote command-line, login, and remote command execution, but any network service can be secured with SSH.
+     - The protocol specification distinguishes between two major versions, referred to as SSH-1 and SSH-2. The standard TCP port for SSH is 22. 
+     - SSH is generally used to access Unix-like operating systems, but it can also be used on Microsoft Windows. Windows 10 uses OpenSSH as its default SSH client.
+     - SSH was designed as a replacement for Telnet and for unsecured remote shell protocols such as the Berkeley rlogin, rsh, and rexec protocols.
+
 - **telnet** 
-- **IMAP, POP3, SMTP**
-- **SNMP**
-- **HTTP, HTTPS**
 
-> - **DNS**\
-> DNS is a worldwide distributed directory of network information. The best known DNS record is A-record, which is used to find the address of a computer connected to the internet and for that DNS maps a www-name to an IPv4 address. A website creator needs to set up DNS records for users could access it by name. It usually involves registering the domain with a registrar and pointing the DNS records at the web servers IP adresses so that users could reach them.\
+- **IMAP, POP3, SMTP**
+
+- **SNMP**
+
+- **HTTP, HTTPS**\
+HTTP means **Hyper Text Transfer Protocol** which means it defines how messages are formatted and transmitted in WWW which is about communication between web clients and servers. Communication between client computers and web servers is done by sending HTTP Requests and receiving HTTP Responses.\
+
+     - **HTTPS**\
+HTTPS means **Hyper Text Transfer Protocol Secure**. Basically, it is the secure version of HTTP. Communications between the browser and website are encrypted by Transport Layer Security (TLS), or its predecessor, Secure Sockets Layer (SSL).     
+
+- **DNS**\
+DNS means **Domain Name System**, it's a worldwide distributed directory of network information. The best known DNS record is A-record, which is used to find the address of a computer connected to the internet.\
+     - Web browsers interact through IP addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.\ 
+     - Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers eliminate the need for humans to memorize IP addresses such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).\
+     - A website creator needs to set up DNS records for users could access it by name. It usually involves registering the domain with a registrar and pointing the DNS records at the web servers IP adresses so that users could reach them.
 
 - **NTP**
 
 - **IP address**\
-IP address is the device's "digital address" - a numerical label assigned to each device connected to a computer network that uses the Internet > Protocol for communication. An IP address serves two main functions: host or network interface identification and location addressing.
+**IP means Internet Protocol** and IP address is the device's "digital address" - a numerical label assigned to each device connected to a computer network that uses the Internet > Protocol for communication. An IP address serves two main functions: host or network interface identification and location addressing.
 
      - IPv4\
 The common type of IP address is known as IPv4, for "version 4", it defines an IP address as a 32-bit number and supports a maximum of approximately 4.3 billion unique IP addresses. IP addresses are written and displayed in human-readable notations, such as 172.16.254.1 in IPv4.
@@ -71,7 +90,7 @@ A host can have multiple network interfaces and each interface can have zero or 
 There are more than a billion pubic addresses, but less than the population of the world. 
 Over 1/8 of all possible IPv4 addressses are set aside for something other than addressing public hosts.
 
-- **IPv6**\
+     - IPv6\
 Because of the growth of the Internet and the depletion of available IPv4 addresses, a new version of IP (IPv6), using 128 bits for the IP address, was standardized in 1998. IPv6 supports, in theory, a maximum number that will never run out.
 
 |     IPv4      |      IPv6     |
@@ -80,8 +99,15 @@ Because of the growth of the Internet and the depletion of available IPv4 addres
 |    4 octets   |   16 octets   |
 |     2^32    |   2^128    |
 
-- **TCP**
+- **TCP**\
+TCP means **Transmission Control Protocol** and is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP).\
+TCP is kind of a middle layerof a stack of networking protocols or protocol stack that supports internet applications.
+HTTP and other applications are built on top of TCP and TCP is built on top of IP
+
+
 - **UDP**
+
+
 - **ICMP**
 
 ### 4. Diagnostika vahendid:
