@@ -87,7 +87,7 @@ SSH means **Secure Shell** and is a cryptographic network protocol for operating
      - SSH is generally used to access Unix-like operating systems, but it can also be used on Microsoft Windows. Windows 10 uses OpenSSH as its default SSH client.
      - SSH was designed as a replacement for Telnet and for unsecured remote shell protocols such as the Berkeley rlogin, rsh, and rexec protocols.
 
-- **telnet**\
+- **Telnet**\
 The name stands for "teletype network". Telnet is a client-server protocol used on the Internet or local area network to provide a bidirectional interactive text-oriented communication facility using a virtual terminal connection. User data is interspersed in-band with Telnet control information in an 8-bit byte oriented data connection over the Transmission Control Protocol (TCP).
      - Typically, this protocol is used to establish a connection to Transmission Control Protocol (TCP) port number 23.
      - To telnet means to establish a connection using the Telnet protocol, either with a command line client or with a graphical interface.
@@ -169,28 +169,28 @@ ICMP means **Internet Control Message Protocol** and is a supporting protocol in
 ### 4. Diagnostic utilities (diagnostika vahendid)
 
 - **Wireshark**\
+Wireshark is the world’s foremost and widely-used network protocol analyzer. It lets the user see what’s happening on his network at a microscopic level. Wireshark development thrives thanks to the volunteer contributions of networking experts around the globe.
 
 - **tcpdump**\
 tcpdump is a common packet analyzer that runs under the command line. It allows the user to display TCP/IP and other packets being transmitted or received over a network to which the computer is attached. tcpdump can be used to monitor traffic for any network application.
      - The original TCP packet format has six flags. For each packet tspdump shows which flags are set on that packet.
      - ICMP (protocol used by ping) and UDP (used by basic DNS lookups) do not have TCP flags or sequence numbers.
 
-- **ping**\
+- **Ping**\
 Ping is a way to test wheather the computer is able to send and receive web requests. Ping measures the round-trip time for messages sent from the originating host to a destination computer that are echoed back to the source.
      - Ping is simpler than HTTP, but HTTP is not based on ping.\
 
-- **traceroute/tracert**\
+- **Traceroute/Tracert**\
 Traceroute shows all the hops involved in getting a traffic from client to a distant server - it will display the route, all the IP addresses of all the routers that it took for traffic to get there.
      - more advanced traceroute tool is MTR - it will repeatedly trace and can sometimes show different routes that traffic may take.
 
-
-- **nslookup/dig**\
+- **NsLookup/dig**\
 The NsLookup tool allows you to query DNS servers for resource records. NsLookup queries the specified DNS server and retrieves the requested records that are associated with the domain name you provided. These records contain information like the domain name’s IP addresses.
 
-- **Ressource monitor (Windows)**\
+- **Resource monitor (Windows)**\
+Resource Monitor, a utility in Windows Vista and later, displays information about the use of hardware (CPU, memory, disk, and network) and software (file handles and modules) resources in real time.
 
-
-- **netstat**\
+- **Netstat**\
 Netstat (network statistics) is a command-line network utility that displays network connections for 
      - Transmission Control Protocol (both incoming and outgoing), 
      - routing tables, 
