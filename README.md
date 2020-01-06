@@ -1,69 +1,82 @@
 # Networking for Web Developers / Udacity on-line course https://classroom.udacity.com/courses/ud256
-## notes by Kristin Tuisk
+### notes by Kristin Tuisk
 
-### 1. cmd commands
+## 1. cmd commands
 
-**Used `ping -c3 8.8.8.8`**\
-- -c means 'send 3 test-messages, then quit\
-- 8.8.8.8 is an address of a particular service at Google  
-- received expected result: 3 packets transmitted, 3 packets received, 0.0% packet loss meaning  
-     - my computer has Internet access  
-     - the computer at 8.8.8.8 is up and running  
-     - my ISP knows how to send and receive traffic towards and from Google    
+- **Used `ping -c3 8.8.8.8`**
+     - -c means 'send 3 test-messages, then quit
+     - 8.8.8.8 is an address of a particular service at Google  
+     - received expected result: 3 packets transmitted, 3 packets received, 0.0% packet loss meaning  
+          - my computer has Internet access  
+          - the computer at 8.8.8.8 is up and running  
+          - my ISP knows how to send and receive traffic towards and from Google    
  
-**Used `printf 'HEAD / HTTP/1.1\r\nHost: www.google.com\r\n\r\n' | nc www.google.com 80`**  
+ 
+- **Used `printf 'HEAD / HTTP/1.1\r\nHost: www.google.com\r\n\r\n' | nc www.google.com 80`**  
 printf is a command for printing formatted strings.
 the netcat utility is used to create client-to-server connections (it can fulfill both server and client role).
 pipe in the middle means that take the output from first request and use it as an input for the second request.
-- received expected result
-     - HTTP-header sent back by the server of Wikipedia (status code, cookies and other header fields)
-     - e.g this is the way to find out what serves Google uses (Server: gws which means google web server)
+     - received expected result
+          - HTTP-header sent back by the server of Wikipedia (status code, cookies and other header fields)
+          - e.g this is the way to find out what serves Google uses (Server: gws which means google web server)
 
 To save the results of an nc command to a file, use the > shell redirection operator.\
 **used `printf "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n" | nc www.example.com 80 > example.txt`**  
      - am not sure if the data was saved anywhere, I did not find the file.
 
-**Used `nc -l 3456`** to start listening on a port 3456.\
+
+- **Used `nc -l 3456`** to start listening on a port 3456.\
 opened another terminal and **used `nc localhost 3456`**\
      - received expected result: this way it is possible to send and receive messages in both windows
 
-**Used `ip route show`** to print the routing table in Linux (`ip r`- gives exactly the same result)
+
+- **Used `ip route show`** to print the routing table in Linux (`ip r` gives exactly the same result)
 The routing table is used to show you where various different network subnets will be routed to.
-- received expected result, the output format is not so easy to read. So I tried `netstat -rn` (needed `sudo apt install net-tools` first) and the output looks neat, easy to read. The same output format comes with `route -n`
+     - received expected result, the output format is not so easy to read. So I tried `netstat -rn` (needed `sudo apt install net-tools` first) and the output looks neat, easy to read. The same output format comes with `route -n`
 
-**Used `host delfi.ee`** that sends a query to Delfi DNS server which can in turn retrieve records from other servers on the internet.
-     - received expected result: delfi.ee and delfi.ee mail hosts IPv4 addresses. I also tried `host -t a amazon.com` which gives only delfi.ee hosts IPv4 addresses (no mail handlers).
 
-**Used `host -t aaaa google.com`** to see a domain or subdomain to an IPv6 address 
+- **Used `host delfi.ee`** that sends a query to Delfi DNS server which can in turn retrieve records from other servers on the internet.
+     - received expected result: delfi.ee and delfi.ee mail hosts IPv4 addresses. 
+     - I also **used `host -t a amazon.com`** which gives only delfi.ee hosts IPv4 addresses (no mail handlers).
+
+
+- **Used `host -t aaaa google.com`** to see a domain or subdomain to an IPv6 address 
 -t means type
      - received expected result: the IPv6 address for google.com. I also tried `host -t aaaa tptlive.ee` and got to know that tptlive.ee has no AAAA record.     
 
-**Used `host -t mx udacity.com`**
+
+- **Used `host -t mx udacity.com`**
 -t for type and mx for mail exchanger
 MX specifies the mail server responsible for accepting email messages on behalf of a domain name. It is a resource record in the DNS. It is possible to configure several MX records, typically pointing to an array of mail servers for load balancing and redundancy.
      - received expected result: information about Udacity mail servers.
 
-**Used `mtr www.udacity.com`**
+
+- **Used `mtr www.udacity.com`**
 MTR is a command line network diagnostic tool that provides the functionality of both the ping and traceroute commands.
      - received expected result: traceroute report where the hostnames and pings are displayed.
 
-**Used `ip addr show`** to find out my IP address
-     - received expected result, but the output format was not very easy-to-read. So I used `curl ident.me` to find out my public IP address and received expected result, just only the IP address. I also used `nmcli -p device show`** to find out my private IP address and as a result received a lot of information, incl. my IPv4 and IPv6 address.
+
+- **Used `ip addr show`** to find out my IP address
+     - received expected result, but the output format was not very easy-to-read. 
+     - **used `curl ident.me`** to find out my public IP address and received expected result, just only the IP address. 
+     - **used `nmcli -p device show`** to find out my private IP address and as a result received a lot of information, incl. my IPv4 and IPv6 address.
  
-**Used `sudo tcpdump -n host 8.8.8.8`** in first and **run `ping -c3 8.8.8.8`** in second Terminal
+
+- **Used `sudo tcpdump -n host 8.8.8.8`** in first and **run `ping -c3 8.8.8.8`** in second Terminal
      - received expected result: for each ping tcpdump shows two packages' records - request and reply.
      - ended with Ctrl + C
 Tcpdump is a command line utility that allows to capture and analyze network traffic going through a system. It is often used to help troubleshoot network issues, as well as a security tool.
 
-**Used `traceroute google.com`**
+
+- **Used `traceroute google.com`**
 was ecpecting to see a lot of data including IP addresses and milliseconds
-     - actual result was: information, that max 30 hops, the first line showed some information, the naxt 29 lines all showed * * * 
+     - the result was: the first line showed some information, the next 29 lines all showed `* * *` 
           - found out that traceoute requires a response from the target server and each of the intermediate hops to create its output. If a router doesn't generate a `Time-to-live exceeded` response, traceroute will not know anything about that hop. a hop that outputs `* * *` means that the router at that hop doesn't respond to the type of packet I was using for the traceroute (by default it's UDP on Unix-like and ICMP on Windows).
           - I also a following suggestion: "If you are using the same version of traceroute I have you can try using the -e option to try to evade firewalls and the -P option to use ICMP, TCP or GRE packets instead of UDP. You can also try specifying a particular port that is unlikely to be filtered (such as 80 or 25) using the -p option."
           - I am not sure how to use traceroute.
           
 
-### 2. Network devices
+## 2. Network devices
 
 - **Router (ruuter)**\
 Router is a device that connects two different IP networks. It acts as a gateway - hosts forward the traffic through the router.
