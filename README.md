@@ -24,15 +24,16 @@ pipe in the middle means that take the output from first request and use it as a
 
 - **Used `nc -l 3456`** to start listening on a port 3456.\
 opened another terminal and **used `nc localhost 3456`**
-     - received expected result: this way it is possible to send and receive messages in both windows
+     - received expected result: it is possible to send and receive messages in both windows
 
-- **Used `ip route show`** to print the routing table in Linux (`ip r` gives exactly the same result)
+- **Used `ip route show`** to print the routing table (`ip r` gives exactly the same result)
 The routing table is used to show you where various different network subnets will be routed to.
-     - received expected result, the output format is not so easy to read. So I tried `netstat -rn` (needed `sudo apt install net-tools` first) and the output looks neat, easy to read. The same output format comes with `route -n`
+     - received expected result, the output format is not so easy to read. 
+     - **used `netstat -rn`** (needed `sudo apt install net-tools` first) and the output looks neat, easy to read. The same output format comes with `route -n`
 
 - **Used `host delfi.ee`** that sends a query to Delfi DNS server which can in turn retrieve records from other servers on the internet.
      - received expected result: delfi.ee and delfi.ee mail hosts IPv4 addresses. 
-     - I also **used `host -t a amazon.com`** which gives only delfi.ee hosts IPv4 addresses (no mail handlers).
+     - I also **used `host -t a delfi.ee`** which gives only delfi.ee hosts IPv4 addresses (no mail handlers).
 
 - **Used `host -t aaaa google.com`** to see a domain or subdomain to an IPv6 address 
 -t means type
@@ -52,7 +53,7 @@ MTR is a command line network diagnostic tool that provides the functionality of
      - **used `curl ident.me`** to find out my public IP address and received expected result, just only the IP address. 
      - **used `nmcli -p device show`** to find out my private IP address and as a result received a lot of information, incl. my IPv4 and IPv6 address.
  
-- **Used `sudo tcpdump -n host 8.8.8.8`** in first and **run `ping -c3 8.8.8.8`** in second Terminal
+- **Used `sudo tcpdump -n host 8.8.8.8`** in first and **ran `ping -c3 8.8.8.8`** in second Terminal
      - received expected result: for each ping tcpdump shows two packages' records - request and reply.
      - ended with Ctrl + C
 Tcpdump is a command line utility that allows to capture and analyze network traffic going through a system. It is often used to help troubleshoot network issues, as well as a security tool.
@@ -130,9 +131,9 @@ HTTPS means **Hyper Text Transfer Protocol Secure**. Basically, it is the secure
      - HTTPS is now used more often by web users than the original non-secure HTTP, primarily to protect page authenticity on all types of websites; secure accounts; and to keep user communications, identity, and web browsing private.
 
 - **DNS**\
-DNS means **Domain Name System**, it's a worldwide distributed directory of network information. The best known DNS record is A-record, which is used to find the address of a computer connected to the internet.\
-     - Web browsers interact through IP addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.\ 
-     - Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers eliminate the need for humans to memorize IP addresses such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).\
+DNS means **Domain Name System**, it's a worldwide distributed directory of network information. The best known DNS record is A-record, which is used to find the address of a computer connected to the internet.
+     - Web browsers interact through IP addresses. DNS translates domain names to IP addresses so browsers can load Internet resources. 
+     - Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers eliminate the need for humans to memorize IP addresses such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).
      - A website creator needs to set up DNS records for users could access it by name. It usually involves registering the domain with a registrar and pointing the DNS records at the web servers IP adresses so that users could reach them.
 
 - **NTP**\
@@ -140,7 +141,7 @@ NTP means **Network Time Protocol** and is a networking protocol for clock synch
      - NTP is intended to synchronize all participating computers to within a few milliseconds of Coordinated Universal Time (UTC).
 
 - **IP address**\
-**IP means Internet Protocol** and IP address is the device's "digital address" - a numerical label assigned to each device connected to a computer network that uses the Internet > Protocol for communication. An IP address serves two main functions: host or network interface identification and location addressing.
+**IP means Internet Protocol** and IP address is the device's "digital address" - a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. An IP address serves two main functions: host or network interface identification and location addressing.
 
      - IPv4\
 The common type of IP address is known as IPv4, for "version 4", it defines an IP address as a 32-bit number and supports a maximum of approximately 4.3 billion unique IP addresses (2^32). IP addresses are written and displayed in human-readable notations, binary bits are separated by a dot(.) (e.g 172.16.254.1), that's why it is not suitable for mobile networks.
