@@ -1,7 +1,7 @@
 # Networking for Web Developers / Udacity on-line course https://classroom.udacity.com/courses/ud256
 ### notes by Kristin Tuisk
 
-## 1. cmd commands
+## 1. Linux cmd commands
 
 - **Used `ping -c3 8.8.8.8`**
      - -c means 'send 3 test-messages, then quit
@@ -10,8 +10,7 @@
           - my computer has Internet access  
           - the computer at 8.8.8.8 is up and running  
           - my ISP knows how to send and receive traffic towards and from Google    
- 
- 
+  
 - **Used `printf 'HEAD / HTTP/1.1\r\nHost: www.google.com\r\n\r\n' | nc www.google.com 80`**  
 printf is a command for printing formatted strings.
 the netcat utility is used to create client-to-server connections (it can fulfill both server and client role).
@@ -20,53 +19,43 @@ pipe in the middle means that take the output from first request and use it as a
           - HTTP-header sent back by the server of Wikipedia (status code, cookies and other header fields)
           - e.g this is the way to find out what serves Google uses (Server: gws which means google web server)
 
-To save the results of an nc command to a file, use the > shell redirection operator.\
-**used `printf "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n" | nc www.example.com 80 > example.txt`**  
+- **Used `printf "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n" | nc www.example.com 80 > example.txt`** to save the results of an nc command to a file (the > shell redirection operator)
      - am not sure if the data was saved anywhere, I did not find the file.
 
-
 - **Used `nc -l 3456`** to start listening on a port 3456.\
-opened another terminal and **used `nc localhost 3456`**\
+opened another terminal and **used `nc localhost 3456`**
      - received expected result: this way it is possible to send and receive messages in both windows
-
 
 - **Used `ip route show`** to print the routing table in Linux (`ip r` gives exactly the same result)
 The routing table is used to show you where various different network subnets will be routed to.
      - received expected result, the output format is not so easy to read. So I tried `netstat -rn` (needed `sudo apt install net-tools` first) and the output looks neat, easy to read. The same output format comes with `route -n`
 
-
 - **Used `host delfi.ee`** that sends a query to Delfi DNS server which can in turn retrieve records from other servers on the internet.
      - received expected result: delfi.ee and delfi.ee mail hosts IPv4 addresses. 
      - I also **used `host -t a amazon.com`** which gives only delfi.ee hosts IPv4 addresses (no mail handlers).
 
-
 - **Used `host -t aaaa google.com`** to see a domain or subdomain to an IPv6 address 
 -t means type
      - received expected result: the IPv6 address for google.com. I also tried `host -t aaaa tptlive.ee` and got to know that tptlive.ee has no AAAA record.     
-
 
 - **Used `host -t mx udacity.com`**
 -t for type and mx for mail exchanger
 MX specifies the mail server responsible for accepting email messages on behalf of a domain name. It is a resource record in the DNS. It is possible to configure several MX records, typically pointing to an array of mail servers for load balancing and redundancy.
      - received expected result: information about Udacity mail servers.
 
-
 - **Used `mtr www.udacity.com`**
 MTR is a command line network diagnostic tool that provides the functionality of both the ping and traceroute commands.
      - received expected result: traceroute report where the hostnames and pings are displayed.
-
 
 - **Used `ip addr show`** to find out my IP address
      - received expected result, but the output format was not very easy-to-read. 
      - **used `curl ident.me`** to find out my public IP address and received expected result, just only the IP address. 
      - **used `nmcli -p device show`** to find out my private IP address and as a result received a lot of information, incl. my IPv4 and IPv6 address.
  
-
 - **Used `sudo tcpdump -n host 8.8.8.8`** in first and **run `ping -c3 8.8.8.8`** in second Terminal
      - received expected result: for each ping tcpdump shows two packages' records - request and reply.
      - ended with Ctrl + C
 Tcpdump is a command line utility that allows to capture and analyze network traffic going through a system. It is often used to help troubleshoot network issues, as well as a security tool.
-
 
 - **Used `traceroute google.com`**
 was ecpecting to see a lot of data including IP addresses and milliseconds
@@ -154,23 +143,16 @@ NTP means **Network Time Protocol** and is a networking protocol for clock synch
 **IP means Internet Protocol** and IP address is the device's "digital address" - a numerical label assigned to each device connected to a computer network that uses the Internet > Protocol for communication. An IP address serves two main functions: host or network interface identification and location addressing.
 
      - IPv4\
-The common type of IP address is known as IPv4, for "version 4", it defines an IP address as a 32-bit number and supports a maximum of approximately 4.3 billion unique IP addresses. IP addresses are written and displayed in human-readable notations, such as 172.16.254.1 in IPv4.
+The common type of IP address is known as IPv4, for "version 4", it defines an IP address as a 32-bit number and supports a maximum of approximately 4.3 billion unique IP addresses (2^32). IP addresses are written and displayed in human-readable notations, binary bits are separated by a dot(.) (e.g 172.16.254.1), that's why it is not suitable for mobile networks.
 
      - IP addresses don't belong to hosts, they belong to interfaces on hosts\
 A host can have multiple network interfaces and each interface can have zero or more IP-addresses.
 
      - Reserved IP addresses\
-There are more than a billion pubic addresses, but less than the population of the world. 
 Over 1/8 of all possible IPv4 addressses are set aside for something other than addressing public hosts.
 
      - IPv6\
-Because of the growth of the Internet and the depletion of available IPv4 addresses, a new version of IP (IPv6), using 128 bits for the IP address, was standardized in 1998. IPv6 supports, in theory, a maximum number that will never run out.
-
-          |     IPv4      |      IPv6     |
-          | ------------- | ------------- |
-          |    32-bits    |   128-bits    |
-          |    4 octets   |   16 octets   |
-          |     2^32      |   2^128       |
+Because of the growth of the Internet and the depletion of available IPv4 addresses, a new version of IP (IPv6), using 128 bits for the IP address, was standardized in 1998. IPv6 supports, in theory, a maximum number that will never run out (2^128). IPv6 address is represented in hexadecimal, colon- separated notation. IPv6 is better suited to mobile networks.
 
 - **TCP**\
 TCP means **Transmission Control Protocol** and is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP).
@@ -203,14 +185,18 @@ tcpdump is a common packet analyzer that runs under the command line. It allows 
 
 - **Ping**\
 Ping is a way to test wheather the computer is able to send and receive web requests. Ping measures the round-trip time for messages sent from the originating host to a destination computer that are echoed back to the source.
-     - Ping is simpler than HTTP, but HTTP is not based on ping.\
+     - Ping is simpler than HTTP, but HTTP is not based on ping.
 
 - **Traceroute/Tracert**\
 Traceroute shows all the hops involved in getting a traffic from client to a distant server - it will display the route, all the IP addresses of all the routers that it took for traffic to get there.
      - more advanced traceroute tool is MTR - it will repeatedly trace and can sometimes show different routes that traffic may take.
 
 - **NsLookup/dig**\
-The NsLookup tool allows you to query DNS servers for resource records. NsLookup queries the specified DNS server and retrieves the requested records that are associated with the domain name you provided. These records contain information like the domain name’s IP addresses.
+The NsLookup tool allows to query DNS servers for resource records. NsLookup queries the specified DNS server and retrieves the requested records that are associated with the domain name provided. These records contain information like the domain name’s IP addresses.
+     - Dig means **Domain Information Groper** and is a network administration command-line tool for querying DNS name servers. 
+          - It is useful for verifying and troubleshooting DNS problems and also to perform DNS lookups and displays the answers that are returned from the name server that were queried. 
+          - dig command replaces older tool such as nslookup and the host. dig tool is available in major Linux distributions.
+          - dig returns result that is more redable for scripts and is closer to the way that it's stored in the DNS server's configuration file.
 
 - **Resource monitor (Windows)**\
 Resource Monitor, a utility in Windows Vista and later, displays information about the use of hardware (CPU, memory, disk, and network) and software (file handles and modules) resources in real time.
