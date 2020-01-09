@@ -9,7 +9,8 @@
      - received expected result: 3 packets transmitted, 3 packets received, 0.0% packet loss meaning  
           - my computer has Internet access  
           - the computer at 8.8.8.8 is up and running  
-          - my ISP knows how to send and receive traffic towards and from Google    
+          - my ISP knows how to send and receive traffic towards and from Google
+          - ping time 16.0 ms
   
 - **Used `printf 'HEAD / HTTP/1.1\r\nHost: www.google.com\r\n\r\n' | nc www.google.com 80`**  
 printf is a command for printing formatted strings.
@@ -185,8 +186,9 @@ tcpdump is a common packet analyzer that runs under the command line. It allows 
      - ICMP (protocol used by ping) and UDP (used by basic DNS lookups) do not have TCP flags or sequence numbers.
 
 - **Ping**\
-Ping is a way to test wheather the computer is able to send and receive web requests. Ping measures the round-trip time for messages sent from the originating host to a destination computer that are echoed back to the source.
-     - Ping is simpler than HTTP, but HTTP is not based on ping.
+A ping is a signal sent to a host that requests a response. It serves two primary purposes: 
+     - to check if the host is available 
+     - to measure how long the response takes. Ping measures the round-trip time for messages sent from the originating host to a destination computer that are echoed back to the source.
 
 - **Traceroute/Tracert**\
 Traceroute shows all the hops involved in getting a traffic from client to a distant server - it will display the route, all the IP addresses of all the routers that it took for traffic to get there.
