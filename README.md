@@ -4,7 +4,7 @@
 ## 1. Linux cmd commands
 
 - **Used `ping -c3 8.8.8.8`**
-     - -c means 'send 3 test-messages, then quit
+     - -c3 means 'send 3 test-messages, then quit
      - 8.8.8.8 is an address of a particular service at Google  
      - received expected result: 3 packets transmitted, 3 packets received, 0.0% packet loss meaning  
           - my computer has Internet access  
